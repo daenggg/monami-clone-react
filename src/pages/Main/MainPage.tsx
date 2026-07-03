@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { BrandWidget } from "../../components/layout/BrandWidget";
-import { BANNER_SLIDES, PRODUCTS, NEWS_ITEMS } from "../../api/mockData";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { BANNER_SLIDES, PRODUCTS } from "../../api/mockData";
 
 import herobannerImg from "../../assets/herobanner.jpg";
 import middleBannerGif from "../../assets/MiddleBanner.gif";
@@ -18,18 +17,9 @@ import newArrival4 from "../../assets/NewArrivals4.jpg";
 import newArrival5 from "../../assets/NewArrivals5.jpg";
 
 export const MainPage: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("premium");
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // 슬라이드 자동 재생 이펙트
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % BANNER_SLIDES.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
   // URL 해시 값(#products)이 존재할 경우 해당 영역으로 스크롤 이동
   useEffect(() => {
@@ -45,31 +35,9 @@ export const MainPage: React.FC = () => {
     }
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % BANNER_SLIDES.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + BANNER_SLIDES.length) % BANNER_SLIDES.length,
-    );
-  };
-
   const filteredProducts = PRODUCTS.filter(
     (p) => p.category === selectedCategory,
   );
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -320, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 320, behavior: "smooth" });
-    }
-  };
 
   // 신제품 더미 데이터 (로컬 이미지로 교체)
   const newArrivals = [
@@ -372,7 +340,7 @@ export const MainPage: React.FC = () => {
                   slider.scrollLeft = scrollLeft - walk;
                 };
 
-                const handleMouseUp = (upEvent: MouseEvent) => {
+                const handleMouseUp = () => {
                   slider.removeEventListener("mousemove", handleMouseMove);
                   slider.removeEventListener("mouseup", handleMouseUp);
                   slider.removeEventListener("mouseleave", handleMouseUp);
