@@ -3,31 +3,83 @@ import { Search, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/monami_logo.jpg";
+import pen4Img from "../../assets/pen4.jpg";
+
+interface DropdownMenu {
+  title: string;
+  links: { name: string; path: string }[];
+}
 
 export const Header: React.FC = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [lang, setLang] = useState("KOR");
 
-  const menuItems = [
-    { name: "모나미소개", path: "/" },
-    { name: "모나미제품", path: "/" },
-    { name: "NEWS & VIDEO", path: "/" },
-    { name: "모나미 미술대회", path: "/" },
-    { name: "고객지원", path: "/" },
-    { name: "기업 구매 / 개발", path: "/" },
+  const menuItems: DropdownMenu[] = [
+    {
+      title: "모나미소개",
+      links: [
+        { name: "CEO 메시지", path: "/" },
+        { name: "회사정보", path: "/" },
+        { name: "회사연혁", path: "/" },
+        { name: "윤리경영", path: "/" },
+        { name: "투자정보", path: "/" },
+        { name: "CI", path: "/" },
+        { name: "찾아오시는 길", path: "/" },
+        { name: "경영방침", path: "/" },
+      ],
+    },
+    {
+      title: "모나미제품",
+      links: [
+        { name: "프리미엄 펜", path: "/" },
+        { name: "펜 · 펜슬", path: "/" },
+        { name: "마카 · 컬러링", path: "/" },
+        { name: "노트 · 사무", path: "/" },
+        { name: "잉크 · 리필", path: "/" },
+      ],
+    },
+    {
+      title: "NEWS & VIDEO",
+      links: [
+        { name: "보도자료", path: "/" },
+        { name: "동영상자료", path: "/" },
+      ],
+    },
+    {
+      title: "모나미 미술대회",
+      links: [
+        { name: "미술대회 소개", path: "/" },
+        { name: "수상작 발표", path: "/" },
+      ],
+    },
+    {
+      title: "고객지원",
+      links: [
+        { name: "질문", path: "/" },
+        { name: "문의하기", path: "/" },
+      ],
+    },
+    {
+      title: "기업 구매 / 개발",
+      links: [
+        { name: "대량 구매 문의", path: "/" },
+        { name: "기업 및 단체 구매", path: "/" },
+        { name: "산업용 맞춤 제품개발", path: "/" },
+      ],
+    },
   ];
 
   return (
     <>
-      {/* Top Utility Bar */}
+      {/* 상단 유틸리티 메뉴 */}
       <div className="w-full bg-[#fcfcfc] border-b border-[#f1f1f1] py-2 px-6 md:px-12 text-xs text-[#666666]">
         <div className="max-w-[1400px] mx-auto flex justify-between items-center w-full">
-          {/* Language & Social Links */}
           <div className="flex items-center gap-4">
+            {/* 언어 선택 드롭다운 */}
             <div className="relative group">
               <button className="border border-[#e1e1e1] rounded px-2 py-0.5 flex items-center gap-1 hover:bg-white transition">
-                <span>🇰🇷 {lang}</span>
+                <span>{lang}</span>
                 <span className="text-[9px]">▼</span>
               </button>
               <div className="absolute left-0 mt-1 hidden group-hover:block bg-white border border-[#e1e1e1] rounded shadow-lg z-50">
@@ -45,6 +97,8 @@ export const Header: React.FC = () => {
                 </button>
               </div>
             </div>
+
+            {/* 소셜 링크 */}
             <div className="flex items-center gap-2">
               <a
                 href="https://facebook.com"
@@ -91,7 +145,6 @@ export const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* Global Links */}
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-black transition">
               HOME
@@ -108,142 +161,216 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Navigation Header */}
-      <header className="sticky top-0 z-40 w-full bg-white border-b border-[#eaeaea] px-6 md:px-12 h-[89px] flex items-center transition-all duration-300">
-        <div className="max-w-[1400px] mx-auto flex justify-between items-center w-full h-full">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src={logoImg}
-              alt="monami"
-              className="w-[169px] h-[89px] object-contain"
-            />
-          </Link>
-
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-[42px]">
-            {menuItems.map((item, idx) => (
-              <Link
-                key={idx}
-                to={item.path}
-                className="text-[#303030] hover:text-black font-medium text-[17px] tracking-tight nav-hover-line transition duration-200"
-                style={{ fontFamily: '"Noto Sans KR", sans-serif' }}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Controls */}
-          <div className="flex items-center gap-5">
-            {/* Search Button */}
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="p-1 text-[#333333] hover:text-black transition"
-              aria-label="Search"
-            >
-              <Search size={22} />
-            </button>
-
-            {/* Hamburger Menu (Mobile/Tablet) */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="p-1 text-[#333333] hover:text-black transition"
-              aria-label="Toggle menu"
-            >
-              <Menu size={24} />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Fullscreen Search Overlay */}
-      {isSearchOpen && (
-        <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in">
-          <div className="bg-white w-full max-w-2xl rounded-2xl p-8 relative shadow-2xl">
-            <button
-              onClick={() => setIsSearchOpen(false)}
-              className="absolute top-5 right-5 text-neutral-400 hover:text-black transition"
-            >
-              <X size={24} />
-            </button>
-            <h3 className="text-lg font-bold mb-4 text-center">검색어 입력</h3>
-            <div className="relative border-b-2 border-black flex items-center pb-2">
-              <input
-                type="text"
-                placeholder="검색어를 입력해 주세요."
-                className="w-full text-lg outline-none pr-8 font-medium placeholder-neutral-300"
-                autoFocus
+      {/* 메인 네비게이션 바 */}
+      <div
+        className="sticky top-0 z-40 w-full bg-white border-b border-[#eaeaea]"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <header className="w-full px-6 md:px-12 h-[89px] flex items-center transition-all duration-300">
+          <div className="max-w-[1400px] mx-auto flex justify-between items-center w-full h-full relative">
+            {/* 로고 */}
+            <Link to="/" className="flex items-center">
+              <img
+                src={logoImg}
+                alt="monami"
+                className="w-[169px] h-[89px] object-contain"
               />
-              <Search className="absolute right-0 text-neutral-400 cursor-pointer hover:text-black" />
-            </div>
-            <div className="mt-5 text-xs text-neutral-400 flex flex-wrap gap-2 justify-center">
-              <span>추천 검색어:</span>
-              <a href="#" className="underline hover:text-black">
-                153 골드
-              </a>
-              <a href="#" className="underline hover:text-black">
-                아크릴 마카
-              </a>
-              <a href="#" className="underline hover:text-black">
-                만년필
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+            </Link>
 
-      {/* Side Slide Menu (Hamburger drawer) */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end">
-          {/* Backdrop */}
-          <div
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute inset-0 bg-black/40 backdrop-blur-xs"
-          />
-          {/* Drawer Panel */}
-          <div className="relative bg-white w-full max-w-sm h-full shadow-2xl p-8 flex flex-col justify-between animate-slide-in overflow-y-auto">
-            <div>
-              <div className="flex justify-between items-center mb-10">
-                <span className="font-extrabold text-xl text-black">
-                  monami.
-                </span>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-neutral-400 hover:text-black transition"
+            {/* 데스크탑 메뉴 */}
+            <nav className="hidden lg:flex items-center gap-[42px] h-full mr-auto ml-[180px]">
+              {menuItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="h-full flex items-center relative group/item"
                 >
-                  <X size={24} />
-                </button>
-              </div>
-
-              <nav className="flex flex-col gap-6">
-                {menuItems.map((item, idx) => (
                   <Link
-                    key={idx}
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-lg font-bold text-neutral-800 hover:text-black transition border-b border-[#f7f7f7] pb-3"
+                    to={item.links[0].path}
+                    className="text-[#303030] hover:text-monami-red font-normal text-[17px] tracking-tight h-full flex items-center px-1 transition duration-200"
+                    style={{ fontFamily: '"Noto Sans KR", sans-serif' }}
                   >
-                    {item.name}
+                    {item.title}
                   </Link>
-                ))}
-              </nav>
-            </div>
+                  {/* 호버 시 붉은색 밑줄 인디케이터 */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-monami-red scale-x-0 group-hover/item:scale-x-100 transition-transform duration-200" />
+                </div>
+              ))}
+            </nav>
 
-            <div className="text-xs text-neutral-400 mt-10">
-              <p className="mb-2">© MONAMI Co., Ltd. All rights reserved.</p>
-              <div className="flex gap-4">
-                <a href="#" className="hover:text-black">
-                  개인정보처리방침
-                </a>
-                <a href="#" className="hover:text-black">
-                  이용약관
-                </a>
-              </div>
+            {/* 유틸리티 아이콘 */}
+            <div className="flex items-center gap-5">
+              {/* 장바구니/메뉴 열기 버튼 */}
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="p-1 text-[#333333] hover:text-black transition cursor-pointer"
+                aria-label="Toggle menu"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* 메인 메뉴 마우스 호버 드롭다운 메가 메뉴 */}
+        <div
+          className={`absolute left-0 right-0 bg-white border-b border-monami-light transition-all duration-300 ease-in-out overflow-hidden z-30 ${
+            isHovered
+              ? "max-h-[380px] opacity-100 py-8"
+              : "max-h-0 opacity-0 py-0 pointer-events-none"
+          }`}
+        >
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative flex">
+            {/* 로고 영역과 동일한 너비의 왼쪽 여백용 스페이서 */}
+            <div className="w-[169px] shrink-0" />
+
+            {/* 헤더의 6개 메뉴와 위치를 정확히 일치시킨 드롭다운 열 구성 */}
+            <div className="flex gap-[30px] items-start ml-[118px] mr-auto">
+              {menuItems.map((category, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col gap-4 text-center shrink-0"
+                  style={{ width: "110px" }} // 각 열당 가로 너비 기준인 89px로 복원 설정
+                >
+                  <div className="flex flex-col gap-2">
+                    {category.links.map((link, lIdx) => (
+                      <Link
+                        key={lIdx}
+                        to={link.path}
+                        className="text-[#666666] hover:text-monami-red hover:underline text-[13px] leading-tight transition duration-150 py-1"
+                        style={{ fontFamily: '"Noto Sans KR", sans-serif' }}
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* 장바구니 우측 사이드바 패널 (하드웨어 가속 트랜지션 슬라이드 적용) */}
+      <div
+        className={`fixed inset-0 z-50 flex justify-end transition-all duration-300 ${
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* 어두운 배경 오버레이 */}
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
+            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        {/* 장바구니 드로어 패널 */}
+        <div
+          className={`relative bg-[#f0f0f0] w-full max-w-[420px] h-full shadow-2xl p-6 flex flex-col justify-between select-none transition-transform duration-300 ease-out transform ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* 내부 점선 테두리 디자인 컨테이너 */}
+          <div className="border border-dashed border-neutral-400 rounded-3xl p-5 flex flex-col flex-1 justify-between h-full bg-[#f0f0f0]">
+            <div>
+              {/* 헤더 영역 (MY CART) */}
+              <div className="flex items-center gap-2 mb-8">
+                <svg
+                  className="w-6 h-6 text-monami-red"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <h2 className="text-[22px] font-extrabold text-monami-red tracking-wide uppercase">
+                  MY CART
+                </h2>
+              </div>
+
+              {/* 담긴 상품 목록 */}
+              <div className="flex flex-col gap-4 overflow-y-auto max-h-[60vh] pr-1">
+                {/* 단일 상품 카드 */}
+                <div className="bg-[#fcfcfc] rounded-2xl p-4 border border-[#e3e3e3] shadow-xs flex gap-4 relative">
+                  {/* 상품 제거 버튼 */}
+                  <button className="absolute top-4 right-4 text-neutral-400 hover:text-red-500 transition cursor-pointer">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* 상품 썸네일 이미지 */}
+                  <div className="w-[85px] h-[85px] bg-white border border-[#eaeaea] rounded-xl flex items-center justify-center p-2 shrink-0">
+                    <img
+                      src={pen4Img}
+                      alt="153 아이디 샤프"
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+
+                  {/* 정보 기재 영역 */}
+                  <div className="flex flex-col justify-between py-0.5 text-left flex-1 pr-6">
+                    <div>
+                      <h4 className="text-[13px] font-bold text-monami-red leading-tight mb-0.5">
+                        153 아이디 샤프
+                      </h4>
+                      <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                        OPTION: BLACK
+                      </span>
+                    </div>
+
+                    {/* 수량 및 개별 단가 */}
+                    <div className="flex justify-between items-end mt-2">
+                      <div className="flex items-center gap-1.5 bg-[#eaeaea] px-2 py-0.5 rounded text-[11px] font-semibold text-neutral-600">
+                        <span>1개</span>
+                        <span className="text-[7px] text-neutral-400">▼</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[13px] font-extrabold text-neutral-800">
+                          10,900
+                        </span>
+                        <span className="text-[8px] text-neutral-400 ml-0.5">
+                          KRW
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 빈 장바구니 슬롯 안내용 카드 레이아웃 */}
+                <div className="h-[120px] rounded-2xl bg-neutral-200/40 border border-neutral-300/30 shadow-inner flex items-center justify-center" />
+                <div className="h-[120px] rounded-2xl bg-neutral-200/40 border border-neutral-300/30 shadow-inner flex items-center justify-center" />
+                <div className="h-[120px] rounded-2xl bg-neutral-200/40 border border-neutral-300/30 shadow-inner flex items-center justify-center" />
+              </div>
+            </div>
+
+            {/* 하단 총액 표시 영역 */}
+            <div className="border-t border-dashed border-neutral-300 pt-6 flex justify-end items-baseline gap-1 bg-[#f0f0f0] w-full">
+              <span className="text-[26px] font-bold text-monami-red">
+                10,900
+              </span>
+              <span className="text-[11px] text-monami-red font-medium uppercase tracking-wider">
+                KRW
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

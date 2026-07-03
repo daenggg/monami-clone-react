@@ -8,10 +8,12 @@
 
 @layer base {
   body {
-    font-family: "Noto Sans KR", sans-serif;
-    color: #111111;
     background-color: #ffffff;
     overflow-x: hidden;
+    color: #111111;
+  }
+  body, button, input, select, textarea, a {
+    font-family: "Noto Sans KR", sans-serif;
   }
 }
 

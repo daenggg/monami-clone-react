@@ -27,202 +27,38 @@ export const BANNER_SLIDES: BannerSlide[] = [
   }
 ];
 
-export const PRODUCTS: Product[] = [
-  {
-    id: 'prod-153-id-refine',
-    name: '153 리파인',
-    engName: '153 REFINE',
-    category: 'premium',
-    price: 35000,
-    description: '심플한 매력과 완벽한 메탈 바디의 153 리파인 볼펜',
-    colors: ['#A0B2C6', '#2F3E46'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['메탈 육각 바디', 'FX 4000 리필심 적용'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-id-fountain',
-    name: '153 아이디 만년필',
-    engName: '153 ID FOUNTAIN PEN',
-    category: 'fountain',
-    price: 45000,
-    description: '만년필',
-    colors: ['#A83232', '#2F3E46'],
-    images: [
-      'https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['스틸 펜촉', '클래식 153 육각 라인'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-neo-ef',
-    name: '153 네오 만년필 EF',
-    engName: '153 NEO FOUNTAIN PEN EF',
-    category: 'fountain',
-    price: 25000,
-    description: '만년필',
-    colors: ['#111111', '#FFFFFF'],
-    images: [
-      'https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['EF 펜촉 사양', '독일 슈미트 닙'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-black-white',
-    name: '153 블랙 & 화이트',
-    engName: '153 BLACK & WHITE',
-    category: 'premium',
-    price: 20000,
-    description: '프리미엄펜',
-    colors: ['#111111', '#FFFFFF'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['매트 가공 피니시', '심플한 매력'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-gold',
-    name: '153 GOLD (골드)',
-    engName: '153 GOLD',
-    category: 'premium',
-    price: 50000,
-    description: '프리미엄펜',
-    colors: ['#D4AF37'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['24K 골드 도금'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-id',
-    name: '153 아이디',
-    engName: '153 ID',
-    category: 'premium',
-    price: 30000,
-    description: '프리미엄펜',
-    colors: ['#111111', '#A0B2C6'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['견고한 황동 바디'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-respect',
-    name: '153 리스펙트',
-    engName: '153 RESPECT',
-    category: 'premium',
-    price: 60000,
-    description: '프리미엄펜',
-    colors: ['#2F3E46', '#A83232'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['묵직한 필기감', '메탈 캡타입'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-white-edition',
-    name: '153 리미티드 에디션 화이트',
-    engName: '153 LIMITED WHITE',
-    category: 'premium',
-    price: 40000,
-    description: '프리미엄펜',
-    colors: ['#FFFFFF'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['한정판 올화이트 에디션'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-153-silver-platinum',
-    name: '153 실버 플래티넘',
-    engName: '153 SILVER PLATINUM',
-    category: 'premium',
-    price: 80000,
-    description: '프리미엄펜',
-    colors: ['#E5E4E7'],
-    images: [
-      'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['백금 도금 헤리티지 리미티드'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-pluspen-3000',
-    name: '프러스펜 3000 60색',
-    engName: 'PLUS PEN 3000',
-    category: 'marker',
-    price: 36000,
-    description: '마카·컬러링',
-    colors: ['#EF4444', '#3B82F6', '#10B981'],
-    images: [
-      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['수성펜 60색 패키지'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-acrylic-marker',
-    name: '아크릴 마카 460 24A색 세트',
-    engName: 'ACRYLIC MARKER 460',
-    category: 'marker',
-    price: 48000,
-    description: '마카·컬러링',
-    colors: ['#F59E0B', '#10B981', '#3B82F6'],
-    images: [
-      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['다양한 표면 채색 아크릴 마카'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-notes',
-    name: '모나미 라인 노트 A5',
-    engName: 'MONAMI NOTE A5',
-    category: 'office',
-    price: 4500,
-    description: '노트·사무용품',
-    colors: ['#E5E4E7'],
-    images: [
-      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['친환경 모나미 노트'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
-  },
-  {
-    id: 'prod-desk-organizer',
-    name: '153 데스크 오거나이저 세트',
-    engName: 'DESK ORGANIZER SET',
-    category: 'office',
-    price: 24000,
-    description: '노트·사무용품',
-    colors: ['#111111', '#555555'],
-    images: [
-      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80'
-    ],
-    features: ['깔끔한 정리를 위한 연필꽂이와 볼펜 트레이 세트'],
-    specs: { '원산지': '대한민국' },
-    isBest: true
+// 펜 리믹스 이미지 경로를 반환하는 헬퍼 함수
+const getPenImage = (index: number) => {
+  return `/src/assets/pen${(index % 9) + 1}.jpg`;
+};
+
+// 각 4가지 카테고리별로 10개씩 상품을 일괄 생성하는 헬퍼 함수
+const generateCategoryProducts = (category: string, catName: string, startIndex: number) => {
+  const result: Product[] = [];
+  for (let i = 1; i <= 10; i++) {
+    const itemIndex = startIndex + i;
+    result.push({
+      id: `prod-${category}-${itemIndex}`,
+      name: `${catName} 제품 ${itemIndex}`,
+      engName: `${category.toUpperCase()} PRODUCT ${itemIndex}`,
+      category: category,
+      price: 15000 + (itemIndex * 2000),
+      description: `${catName} 라인업의 특별한 필기구 시리즈 ${i}`,
+      colors: ['#111111', '#A83232', '#A0B2C6'],
+      images: [getPenImage(itemIndex)],
+      features: ['인체공학적 그립', '부드러운 필기감'],
+      specs: { '원산지': '대한민국' },
+      isBest: true
+    });
   }
+  return result;
+};
+
+export const PRODUCTS: Product[] = [
+  ...generateCategoryProducts('premium', '프리미엄 펜', 0),
+  ...generateCategoryProducts('fountain', '펜 · 펜슬', 10),
+  ...generateCategoryProducts('marker', '마카 · 컬러링', 20),
+  ...generateCategoryProducts('office', '노트 · 사무용품', 30)
 ];
 
 export const NEWS_ITEMS: NewsItem[] = [

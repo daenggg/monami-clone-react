@@ -9,14 +9,14 @@ export const NotFoundPage: React.FC = () => {
       <Header />
 
       <main className="flex-1 flex flex-col items-center justify-center py-24 px-6 text-center max-w-lg mx-auto">
-        {/* Monami Style 404 Visual Icon */}
+        {/* 404 그래픽 영역 */}
         <div className="relative mb-8">
           <span className="font-extrabold text-9xl text-neutral-200 tracking-tighter select-none">
             404
           </span>
         </div>
 
-        {/* Message */}
+        {/* 안내문구 */}
         <h1 className="text-2xl font-extrabold text-neutral-900 mb-4 tracking-tight">
           페이지를 찾을 수 없습니다.
         </h1>
@@ -28,7 +28,7 @@ export const NotFoundPage: React.FC = () => {
           입력하신 주소를 다시 한번 확인해 주시기 바랍니다.
         </p>
 
-        {/* Back button */}
+        {/* 메인 이동 버튼 */}
         <Link
           to="/"
           className="bg-black hover:bg-neutral-800 text-white font-bold text-xs tracking-widest px-8 py-3.5 rounded-full shadow-md active:bg-neutral-900 transition-all-300 uppercase"
