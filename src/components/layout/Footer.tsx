@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import footLogo from "../../assets/foot_logo.jpg";
 
 export const Footer: React.FC = () => {
-  const [isFamilyOpen, setIsFamilyOpen] = useState(false);
 
   return (
     <footer className="w-full bg-[#111111] text-[#777777] text-[14px] py-14 px-6 md:px-12 border-t border-[#222222] relative">

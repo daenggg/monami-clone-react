@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Header } from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { BrandWidget } from "../../components/layout/BrandWidget";
@@ -10,7 +10,6 @@ import { ScrollToTopButton } from "../../components/layout/ScrollToTopButton";
 
 export const DetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
-  const navigate = useNavigate();
   const product = productId ? getProductById(productId) : undefined;
 
   const [activeImageIdx, setActiveImageIdx] = useState(0);

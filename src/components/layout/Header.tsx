@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/monami_logo.jpg";
