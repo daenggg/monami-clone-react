@@ -1,5 +1,18 @@
 import type { Product, NewsItem, VideoItem, BannerSlide } from '../types';
 
+// 펜 정적 이미지 정적 임포트 (빌드 타임 해시 경로 변환 해결)
+import pen1 from '../assets/pen1.jpg';
+import pen2 from '../assets/pen2.jpg';
+import pen3 from '../assets/pen3.jpg';
+import pen4 from '../assets/pen4.jpg';
+import pen5 from '../assets/pen5.jpg';
+import pen6 from '../assets/pen6.jpg';
+import pen7 from '../assets/pen7.jpg';
+import pen8 from '../assets/pen8.jpg';
+import pen9 from '../assets/pen9.jpg';
+
+const PEN_IMAGES = [pen1, pen2, pen3, pen4, pen5, pen6, pen7, pen8, pen9];
+
 export const BANNER_SLIDES: BannerSlide[] = [
   {
     id: 'slide-1',
@@ -29,7 +42,7 @@ export const BANNER_SLIDES: BannerSlide[] = [
 
 // 펜 리믹스 이미지 경로를 반환하는 헬퍼 함수
 const getPenImage = (index: number) => {
-  return `/src/assets/pen${(index % 9) + 1}.jpg`;
+  return PEN_IMAGES[index % PEN_IMAGES.length];
 };
 
 // 각 4가지 카테고리별로 10개씩 상품을 일괄 생성하는 헬퍼 함수
