@@ -83,8 +83,8 @@ export const MainPage: React.FC = () => {
       {/* 헤더 네비게이션 */}
       <Header />
 
-      {/* 히어로 배너 섹션 */}
-      <section className="relative w-full max-w-[1557px] mx-auto h-[652px] overflow-hidden bg-black">
+      {/* 히어로 배너 섹션 (가로 전체 채움 피팅) */}
+      <section className="relative w-full h-[652px] overflow-hidden bg-black">
         {/* 배너 배경 이미지 */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
