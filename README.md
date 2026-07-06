@@ -1,75 +1,58 @@
-# React + TypeScript + Vite
+# 🖊️ 모나미(Monami) 홈페이지 클론 코딩
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+모나미 공식 브랜드스토어의 핵심 사용자 경험을 재해석하여 구현한 **React + TypeScript** 기반의 프론트엔드 모듈러 웹 애플리케이션입니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ 기술 스택 (Tech Stack)
 
-## React Compiler
+- **Library**: React 18, React Router DOM v6
+- **Language**: TypeScript (strict type checking)
+- **Styling**: TailwindCSS v4, Custom Base CSS
+- **Build Tool**: Vite
+- **Icons**: Lucide React
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🌟 핵심 기능 및 구현 (Core Features)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. 동적 데이터 라우팅 (Dynamic Routing)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `useParams` 훅을 활용한 단일 템플릿 상세 페이지(`DetailPage.tsx`) 아키텍처 구현
+- 상품 클릭 시 고유 `id` 주소값을 통해 단일 템플릿으로 수십 개의 펜 상품 정보를 0.1초 만에 분기 렌더링
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2. 하드웨어 가속 "MY CART" 사이드 드로어
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- GPU 가속 애니메이션인 CSS `transform: translate-x` 제어를 이용한 무진동 60fps 슬라이딩 애니메이션 개폐 인터랙션 적용
 
+### 3. 드래그 스크롤 캐러셀 사용성(UX) 고도화
+
+- 마우스 드래그를 이용해 상품들을 슥슥 넘겨볼 수 있는 가로 스크롤 캐러셀 적용
+- HTML5 기본 드래그 기능에 의한 이미지 고스트 현상 원천 차단
+- 5px 미세 임계값 분기를 구현하여 단순 클릭과 스크롤 드래그 모션을 영리하게 구분
+
+### 4. 1:1 디바이스 반응형 레이아웃
+
+- PC 와이드 해상도부터 모바일 화면까지 픽셀 깨짐이나 잘림 현상 없는 완벽한 유동 그리드 레이아웃 확보
+
+---
+
+## 🏃 시작하기 (Getting Started)
+
+### 설치 (Installation)
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 로컬 실행 (Local Development)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 배포 빌드 (Production Build)
 
+```bash
+npm run build
 ```
