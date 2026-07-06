@@ -1,91 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-monami-red: #C40F39;
+  --color-monami-red: #c40f39;
   --color-monami-gray: #b3b3b3;
   --color-monami-bg-gray: #eeeeee;
+  --color-monami-black: #111111;
 }
 
 @layer base {
+  * {
+    font-family: "Noto Sans KR", sans-serif;
+  }
   body {
     background-color: #ffffff;
     overflow-x: hidden;
-    color: #111111;
-  }
-  body, button, input, select, textarea, a {
-    font-family: "Noto Sans KR", sans-serif;
+    color: var(--color-monami-black);
   }
 }
 
-/* Custom transitions and scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Common Classes / Custom Utilities for layout spacing & hover states */
+/* 호버 설정 */
 .transition-all-300 {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.text-monami-black {
-  color: #111111;
-}
-
-.bg-monami-gray {
-  background-color: #b3b3b3;
-}
-
-.text-monami-gray {
-  color: #b3b3b3;
-}
-
-.border-monami-light {
-  border-color: #b3b3b3;
-}
-
-.bg-monami-light-gray {
-  background-color: #eeeeee;
-}
-
-.text-monami-light-gray {
-  color: #eeeeee;
-}
-
-.text-monami-red {
-  color: #C40F39;
-}
-
-.bg-monami-red {
-  background-color: #C40F39;
-}
-
-.border-monami-red {
-  border-color: #C40F39;
-}
-
-.nav-hover-line {
-  position: relative;
-}
-.nav-hover-line::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #111111;
-  transition: width 0.25s ease-out;
-}
-.nav-hover-line:hover::after {
-  width: 100%;
 }
