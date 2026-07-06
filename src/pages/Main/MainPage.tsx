@@ -325,6 +325,9 @@ export const MainPage: React.FC = () => {
               className="flex gap-4 overflow-x-auto pb-8 px-6 md:px-12 scrollbar-none cursor-grab active:cursor-grabbing select-none"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               onMouseDown={(e) => {
+                // 브라우저의 기본 링크/텍스트/이미지 드래그 아웃라인 선택 현상 차단
+                e.preventDefault();
+
                 const slider = scrollContainerRef.current;
                 if (!slider) return;
                 const startX = e.pageX - slider.offsetLeft;
@@ -333,17 +336,20 @@ export const MainPage: React.FC = () => {
                 let isMoved = false;
 
                 const handleMouseMove = (moveEvent: MouseEvent) => {
-                  moveEvent.preventDefault();
-                  isMoved = true;
                   const x = moveEvent.pageX - slider.offsetLeft;
                   const walk = (x - startX) * 1.5;
+                  
+                  if (Math.abs(x - startX) > 5) {
+                    isMoved = true;
+                  }
+                  
                   slider.scrollLeft = scrollLeft - walk;
                 };
 
                 const handleMouseUp = () => {
-                  slider.removeEventListener("mousemove", handleMouseMove);
-                  slider.removeEventListener("mouseup", handleMouseUp);
-                  slider.removeEventListener("mouseleave", handleMouseUp);
+                  // 마우스를 뗄 때 window에서 등록된 모든 슬라이드 리스너 제거 (어느 공간에서 떼든 확실하게 해제되도록 보장)
+                  window.removeEventListener("mousemove", handleMouseMove);
+                  window.removeEventListener("mouseup", handleMouseUp);
 
                   if (isMoved) {
                     const preventClick = (clickEvent: MouseEvent) => {
@@ -357,9 +363,13 @@ export const MainPage: React.FC = () => {
                   }
                 };
 
-                slider.addEventListener("mousemove", handleMouseMove);
-                slider.addEventListener("mouseup", handleMouseUp);
-                slider.addEventListener("mouseleave", handleMouseUp);
+                // window 전역으로 이벤트를 확장하여 슬라이더 바깥에서 떼어도 마우스 물림이 풀리도록 패치
+                window.addEventListener("mousemove", handleMouseMove);
+                window.addEventListener("mouseup", handleMouseUp);
+              }}
+              onDragStart={(e) => {
+                // HTML5 고유의 파일 드래그 모션 차단
+                e.preventDefault();
               }}
             >
               {filteredProducts.map((prod) => (

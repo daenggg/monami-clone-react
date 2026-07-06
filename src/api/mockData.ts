@@ -45,10 +45,10 @@ const getPenImage = (index: number) => {
   return PEN_IMAGES[index % PEN_IMAGES.length];
 };
 
-// 각 4가지 카테고리별로 10개씩 상품을 일괄 생성하는 헬퍼 함수
+// 각 4가지 카테고리별로 20개씩 상품을 일괄 생성하는 헬퍼 함수
 const generateCategoryProducts = (category: string, catName: string, startIndex: number) => {
   const result: Product[] = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 20; i++) {
     const itemIndex = startIndex + i;
     result.push({
       id: `prod-${category}-${itemIndex}`,
@@ -69,9 +69,9 @@ const generateCategoryProducts = (category: string, catName: string, startIndex:
 
 export const PRODUCTS: Product[] = [
   ...generateCategoryProducts('premium', '프리미엄 펜', 0),
-  ...generateCategoryProducts('fountain', '펜 · 펜슬', 10),
-  ...generateCategoryProducts('marker', '마카 · 컬러링', 20),
-  ...generateCategoryProducts('office', '노트 · 사무용품', 30)
+  ...generateCategoryProducts('fountain', '펜 · 펜슬', 20),
+  ...generateCategoryProducts('marker', '마카 · 컬러링', 40),
+  ...generateCategoryProducts('office', '노트 · 사무용품', 60)
 ];
 
 export const NEWS_ITEMS: NewsItem[] = [
