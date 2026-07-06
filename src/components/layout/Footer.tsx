@@ -2,28 +2,21 @@ import React from "react";
 import footLogo from "../../assets/foot_logo.jpg";
 
 export const Footer: React.FC = () => {
-
   return (
     <footer className="w-full bg-[#111111] text-[#777777] text-[14px] py-14 px-6 md:px-12 border-t border-[#222222] relative">
       <div className="max-w-7xl mx-auto flex flex-col gap-10">
-        
         {/* 상단 섹션: 로고 및 약관 링크 */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#222222] pb-6 gap-4">
           <img src={footLogo} alt="monami" className="h-6 object-contain" />
 
           <div className="flex flex-wrap gap-4 text-[14px]">
-            <a href="#" className="text-white hover:underline transition">
-              회사소개
-            </a>
+            <a className="text-white hover:underline transition">회사소개</a>
             <span className="text-neutral-700">|</span>
-            <a
-              href="#"
-              className="text-white hover:underline font-bold transition"
-            >
+            <a className="text-white hover:underline font-bold transition">
               개인정보처리방침
             </a>
             <span className="text-neutral-700">|</span>
-            <a href="#" className="text-white hover:underline transition">
+            <a className="text-white hover:underline transition">
               이메일무단수집거부
             </a>
           </div>
@@ -31,7 +24,6 @@ export const Footer: React.FC = () => {
 
         {/* 하단 섹션: 회사 정보, 고객센터 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
-          
           {/* 기업 정보 */}
           <div className="flex flex-col gap-2 lg:col-span-8">
             <h4 className="font-extrabold text-white text-[14px] tracking-wider">
@@ -63,7 +55,6 @@ export const Footer: React.FC = () => {
               </button>
             </div>
           </div>
-
         </div>
       </div>
     </footer>

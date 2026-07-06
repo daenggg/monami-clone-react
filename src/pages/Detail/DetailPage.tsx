@@ -247,7 +247,7 @@ export const DetailPage: React.FC = () => {
                       <button
                         key={idx}
                         onClick={() => setSelectedColor(chip.label)}
-                        className={`w-16 h-10 flex flex-col items-center justify-center p-1 text-[9px] font-bold border transition ${
+                        className={`w-12 h-12 flex flex-col items-center justify-center p-1 text-[9px] font-bold border transition ${
                           selectedColor === chip.label
                             ? "border-neutral-900 bg-neutral-900 text-white"
                             : "border-transparent " + chip.bg + " " + chip.color

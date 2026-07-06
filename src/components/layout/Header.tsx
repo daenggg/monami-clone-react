@@ -214,7 +214,7 @@ export const Header: React.FC = () => {
 
         {/* 메인 메뉴 마우스 호버 드롭다운 메가 메뉴 */}
         <div
-          className={`absolute left-0 right-0 bg-white border-b border-monami-light transition-all duration-300 ease-in-out overflow-hidden z-30 ${
+          className={`absolute left-0 right-0 bg-white border-b border-monami-gray transition-all duration-300 ease-in-out overflow-hidden z-30 ${
             isHovered
               ? "max-h-[380px] opacity-100 py-8"
               : "max-h-0 opacity-0 py-0 pointer-events-none"

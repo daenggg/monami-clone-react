@@ -285,7 +285,7 @@ export const MainPage: React.FC = () => {
       {/* 인기 제품 (BEST PRODUCT) 드래그 캐러셀 섹션 */}
       <section
         id="products"
-        className="py-24 bg-monami-light-gray w-full border-b border-monami-light overflow-hidden"
+        className="py-24 bg-monami-bg-gray w-full border-b border-monami-gray overflow-hidden"
       >
         <div className="w-full text-center">
           <h2 className="text-3xl font-extrabold text-black tracking-widest mb-1">
@@ -409,10 +409,10 @@ export const MainPage: React.FC = () => {
       </section>
 
       {/* 하단 브랜드 소식 & 안내 3열 그리드 (뉴스 / 문의 / 스토어) */}
-      <section className="w-full border-b border-monami-light bg-[#f9f9fa] py-0 overflow-hidden">
+      <section className="w-full border-b border-monami-gray bg-[#f9f9fa] py-0 overflow-hidden">
         <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row justify-center items-center">
           {/* 1열: 모나미 뉴스 리스트 */}
-          <div className="bg-white p-8 flex flex-col justify-between text-left w-full lg:w-[700px] h-[355px] border-b lg:border-b-0 lg:border-r border-monami-light shrink-0">
+          <div className="bg-white p-8 flex flex-col justify-between text-left w-full lg:w-[700px] h-[355px] border-b lg:border-b-0 lg:border-r border-monami-gray shrink-0">
             <div>
               <div className="flex justify-between items-end pb-2 mb-4 relative">
                 <div className="flex flex-col gap-0.5">
@@ -431,7 +431,7 @@ export const MainPage: React.FC = () => {
                 <img
                   src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=300&q=80"
                   alt="news thumb"
-                  className="w-[120px] h-[90px] object-cover border border-monami-light shrink-0"
+                  className="w-[120px] h-[90px] object-cover border border-monami-gray shrink-0"
                 />
                 <div className="flex flex-col justify-between py-0.5">
                   <h4 className="font-bold text-[13px] text-neutral-900 leading-tight group-hover:text-monami-red transition line-clamp-none">
@@ -447,25 +447,22 @@ export const MainPage: React.FC = () => {
               </div>
 
               {/* 텍스트 뉴스 리스트 */}
-              <ul className="flex flex-col gap-2 text-[11px] text-neutral-600 border-t border-dotted border-monami-light pt-3">
+              <ul className="flex flex-col gap-2 text-[11px] text-neutral-600 border-t border-dotted border-monami-gray pt-3">
                 <li className="flex justify-between hover:text-black cursor-pointer transition">
-                  <span className="truncate pr-4">
-                    - '쓰는 펜'과 '그리는 펜' 직접 경험해보세요! 모나미,
-                    갤러리아..
+                  <span className="whitespace-normal pr-4">
+                    - '쓰는 펜'과 '그리는 펜' 직접 경험해보세요! 모나미, 갤러리아 백화점 광교점 팝업 스토어 오픈
                   </span>
                   <span className="text-neutral-400 shrink-0">2025-12-11</span>
                 </li>
                 <li className="flex justify-between hover:text-black cursor-pointer transition">
-                  <span className="truncate pr-4">
-                    - 주방 필수품 키친마카 라인업 확대.. 모나미, '실리콘 전용
-                    키친마..
+                  <span className="whitespace-normal pr-4">
+                    - 주방 필수품 키친마카 라인업 확대.. 모나미, '실리콘 전용 키친마카' 신색상 추가 출시
                   </span>
                   <span className="text-neutral-400 shrink-0">2025-11-17</span>
                 </li>
                 <li className="flex justify-between hover:text-black cursor-pointer transition">
-                  <span className="truncate pr-4">
-                    - 10월 25일 독도의 날 기념 모나미 '153 독도' 수익금 기부 및
-                    특별 ..
+                  <span className="whitespace-normal pr-4">
+                    - 10월 25일 독도의 날 기념 모나미 '153 독도' 패키지 수익금 전액 기부 및 특별 특별 한정판 기부 전달식 완료
                   </span>
                   <span className="text-neutral-400 shrink-0">2025-10-24</span>
                 </li>
@@ -474,7 +471,7 @@ export const MainPage: React.FC = () => {
           </div>
 
           {/* 2열: 문의처 안내 (INQUIRY) */}
-          <div className="bg-[#e9e9e9] p-8 flex flex-col items-center justify-center text-center w-full lg:w-[350px] h-[355px] border-b lg:border-b-0 lg:border-r border-monami-light shrink-0">
+          <div className="bg-[#e9e9e9] p-8 flex flex-col items-center justify-center text-center w-full lg:w-[350px] h-[355px] border-b lg:border-b-0 lg:border-r border-monami-gray shrink-0">
             <div className="mb-3">
               <svg
                 className="w-10 h-10 text-[#111111]"
