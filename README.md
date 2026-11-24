@@ -1,58 +1,85 @@
-# 🖊️ 모나미(Monami) 홈페이지 클론 코딩
+# DARTIN
 
-모나미 공식 브랜드스토어의 핵심 사용자 경험을 재해석하여 구현한 **React + TypeScript** 기반의 프론트엔드 모듈러 웹 애플리케이션입니다.
+기업명 하나로 재무제표, 최신 뉴스, AI 분석, 채용공고 링크를 한 번에 조회하고 AI와 대화로 기업 정보를 탐색할 수 있는 웹 서비스입니다.
 
----
+<br>
 
-## 🛠️ 기술 스택 (Tech Stack)
+![DARTIN 로그인 페이지](./login-preview.jpg)
 
-- **Library**: React 18, React Router DOM v6
-- **Language**: TypeScript (strict type checking)
-- **Styling**: TailwindCSS v4, Custom Base CSS
-- **Build Tool**: Vite
-- **Icons**: Lucide React
+<br>
 
----
+## 주요 기능
 
-## 🌟 핵심 기능 및 구현 (Core Features)
+| 기능 | 설명 |
+|------|------|
+| 기업 검색 | 키워드로 상장 기업 검색, 동명 기업 후보 선택 지원 |
+| 기업 대시보드 | 기업 기본 정보, 연도별 재무제표, 최신 뉴스, AI 한줄평 |
+| 채용공고 연결 | 사람인 / 원티드 / Work24 채용 링크 바로가기 |
+| AI 채팅 | 기업에 대해 AI와 실시간 스트리밍 질의응답 (SSE) |
+| 채팅 히스토리 | 대화 세션 저장 및 불러오기, 핀 고정 |
+| 카카오 로그인 | 카카오 OAuth 2.0 소셜 로그인 |
+| 다크모드 | 라이트 / 다크 테마 전환 |
 
-### 1. 동적 데이터 라우팅 (Dynamic Routing)
+<br>
 
-- `useParams` 훅을 활용한 단일 템플릿 상세 페이지(`DetailPage.tsx`) 아키텍처 구현
-- 상품 클릭 시 고유 `id` 주소값을 통해 단일 템플릿으로 수십 개의 펜 상품 정보를 0.1초 만에 분기 렌더링
+## 기술 스택
 
-### 2. 하드웨어 가속 "MY CART" 사이드 드로어
+| 분류 | 기술 |
+|------|------|
+| Framework | React 19, TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS v4 |
+| Routing | React Router DOM v7 |
+| HTTP | Axios, Fetch API (SSE) |
+| Chart | Chart.js, react-chartjs-2 |
+| Deploy | Vercel |
 
-- GPU 가속 애니메이션인 CSS `transform: translate-x` 제어를 이용한 무진동 60fps 슬라이딩 애니메이션 개폐 인터랙션 적용
+<br>
 
-### 3. 드래그 스크롤 캐러셀 사용성(UX) 고도화
+## 프로젝트 구조
 
-- 마우스 드래그를 이용해 상품들을 슥슥 넘겨볼 수 있는 가로 스크롤 캐러셀 적용
-- HTML5 기본 드래그 기능에 의한 이미지 고스트 현상 원천 차단
-- 5px 미세 임계값 분기를 구현하여 단순 클릭과 스크롤 드래그 모션을 영리하게 구분
+```
+src/
+├── components/
+│   ├── chat/           # AI 채팅 영역, 채팅 히스토리 사이드바
+│   ├── common/         # 공통 모달, 마크다운 렌더러, 온보딩
+│   ├── company/        # 기업 대시보드 (재무, 뉴스, 기업정보 탭)
+│   ├── layout/         # 헤더
+│   └── login/          # 로그인 프리뷰 카드
+├── hooks/              # 커스텀 훅
+├── pages/              # 라우팅 페이지 (Login, Home, NotFound)
+├── services/           # API 통신 (auth, chat, company)
+└── types/              # 공통 TypeScript 타입 정의
+```
 
-### 4. 1:1 디바이스 반응형 레이아웃
+<br>
 
-- PC 와이드 해상도부터 모바일 화면까지 픽셀 깨짐이나 잘림 현상 없는 완벽한 유동 그리드 레이아웃 확보
-
----
-
-## 🏃 시작하기 (Getting Started)
-
-### 설치 (Installation)
+## 시작하기
 
 ```bash
+# 의존성 설치
 npm install
-```
 
-### 로컬 실행 (Local Development)
-
-```bash
+# 개발 서버 실행
 npm run dev
-```
 
-### 배포 빌드 (Production Build)
-
-```bash
+# 빌드
 npm run build
 ```
+
+### 환경 변수 설정
+
+`.env` 파일을 생성하고 아래 변수를 설정하세요.
+
+```env
+VITE_KAKAO_REST_API_KEY=your_kakao_rest_api_key
+VITE_KAKAO_REDIRECT_URI=your_redirect_uri
+VITE_BACKEND_URL=your_backend_api_url
+```
+
+<br>
+
+## 관련 링크
+
+- Backend Repository: [DARTIN-Backend](https://github.com/daenggg/DARTIN-Backend)
+- 배포 URL: https://go-wests-frontend.vercel.app
